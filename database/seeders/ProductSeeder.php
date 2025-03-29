@@ -1,0 +1,198 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProductSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('products')->insert([
+            [
+                'title' => 'Gaming Mouse',
+                'description' => 'Ergonomic gaming mouse with RGB lighting.',
+                'price' => '34.99',
+                'category' => 'Electronics',
+                'quantity' => '150',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Cookware Set',
+                'description' => 'Non-stick pots and pans set for cooking.',
+                'price' => '89.99',
+                'category' => 'Home Appliances',
+                'quantity' => '40',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'LED Desk Lamp',
+                'description' => 'Adjustable brightness desk lamp with USB charging.',
+                'price' => '29.99',
+                'category' => 'Home Appliances',
+                'quantity' => '60',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Laptop Backpack',
+                'description' => 'Water-resistant backpack with multiple compartments.',
+                'price' => '59.99',
+                'category' => 'Fashion',
+                'quantity' => '80',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Fitness Tracker',
+                'description' => 'Track your steps, heart rate, and sleep patterns.',
+                'price' => '99.99',
+                'category' => 'Electronics',
+                'quantity' => '200',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Electric Kettle',
+                'description' => 'Fast-boiling electric kettle with auto shut-off.',
+                'price' => '19.99',
+                'category' => 'Home Appliances',
+                'quantity' => '90',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Bluetooth Speaker',
+                'description' => 'Portable Bluetooth speaker with deep bass.',
+                'price' => '59.99',
+                'category' => 'Electronics',
+                'quantity' => '120',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Office Chair',
+                'description' => 'Ergonomic office chair with lumbar support.',
+                'price' => '129.99',
+                'category' => 'Home Appliances',
+                'quantity' => '25',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Basketball',
+                'description' => 'Durable basketball for indoor and outdoor use.',
+                'price' => '19.99',
+                'category' => 'Sports',
+                'quantity' => '150',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Wireless Earbuds',
+                'description' => 'High-quality Bluetooth earbuds with noise cancellation.',
+                'price' => '49.99',
+                'category' => 'Electronics',
+                'quantity' => '100',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Running Shoes',
+                'description' => 'Lightweight and comfortable running shoes.',
+                'price' => '79.99',
+                'category' => 'Sports',
+                'quantity' => '50',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Smartphone',
+                'description' => 'Latest model smartphone with advanced features.',
+                'price' => '699.99',
+                'category' => 'Electronics',
+                'quantity' => '30',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Yoga Mat',
+                'description' => 'Non-slip, eco-friendly yoga mat.',
+                'price' => '24.99',
+                'category' => 'Sports',
+                'quantity' => '120',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Blender',
+                'description' => 'Multi-speed blender for smoothies and shakes.',
+                'price' => '39.99',
+                'category' => 'Home Appliances',
+                'quantity' => '75',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'T-Shirt',
+                'description' => '100% cotton T-shirt available in multiple sizes.',
+                'price' => '14.99',
+                'category' => 'Fashion',
+                'quantity' => '300',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Electric Fan',
+                'description' => 'High-speed electric fan with adjustable settings.',
+                'price' => '49.99',
+                'category' => 'Home Appliances',
+                'quantity' => '60',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Water Bottle',
+                'description' => 'Reusable stainless steel water bottle.',
+                'price' => '19.99',
+                'category' => 'Sports',
+                'quantity' => '200',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Headphones',
+                'description' => 'Noise-cancelling over-ear headphones.',
+                'price' => '99.99',
+                'category' => 'Electronics',
+                'quantity' => '80',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Desk Organizer',
+                'description' => 'Multi-compartment desk organizer for office supplies.',
+                'price' => '14.99',
+                'category' => 'Home Appliances',
+                'quantity' => '150',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Basketball Shoes',
+                'description' => 'High-performance basketball shoes for athletes.',
+                'price' => '129.99',
+                'category' => 'Sports',
+                'quantity' => '40',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+    }
+}
