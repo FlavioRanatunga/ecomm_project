@@ -8,9 +8,11 @@ use App\Http\Controllers\AdminController;
 
 route::get('/',[HomeController::class,'home']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+route::get('/dashboard',[HomeController::class,'login_home'])->middleware(['auth', 'verified'])->name('dashboard');
+
+//Route::get('/dashboard', function () {
+//    return view('home.index');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -45,5 +47,7 @@ route::post('update_product/{id}', [AdminController::class,'update_product']) ->
 route::get('delete_product/{id}', [AdminController::class,'delete_product']) -> middleware(['auth', 'admin']);
 
 route::get('search_product', [AdminController::class,'search_product']) -> middleware(['auth', 'admin']);
+
+route::get('product_details/{id}', [HomeController::class,'product_details']);
 
 

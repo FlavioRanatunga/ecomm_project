@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav  ">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="shop.html">
@@ -34,26 +34,40 @@
             </li>
           </ul>
           <div class="user_option">
-            <a href="{{url('/login')}}">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <span>
-                Login
-              </span>
-            </a>
-            <a href="{{url('/register')}}">
-              <i class="fa fa-vcard" aria-hidden="true"></i>
-              <span>
-                Register
-              </span>
-            </a>
+          @if (Route::has('login'))
+            
+            @auth 
             <a href="">
               <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             </a>
-            <form class="form-inline ">
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
+            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+              @csrf
+              <button type="submit" class="nav-link" style="background: none; border: none; color: inherit; padding: 0; cursor: pointer;">
+                Logout
               </button>
             </form>
+            @else 
+              <a href="{{url('/login')}}">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>
+                  Login
+                </span>
+              </a>
+              <a href="{{url('/register')}}">
+                <i class="fa fa-vcard" aria-hidden="true"></i>
+                <span>
+                  Register
+                </span>
+              </a>
+              @endauth
+            @endif
+            <!--
+<form class="form-inline ">
+  <button class="btn nav_search-btn" type="submit">
+    <i class="fa fa-search" aria-hidden="true"></i>
+  </button>
+</form>
+-->
           </div>
         </div>
       </nav>
