@@ -23,6 +23,7 @@
               </div>
               <div style="padding:15px">
                 <a class="btn btn-danger" href="{{url('product_details',$product->id)}}">Details</a>
+                <a class="btn btn-success" href="{{url('add_cart',$product->id)}}">Add to Cart</a>
               </div>
 
           </div>

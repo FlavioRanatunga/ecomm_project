@@ -50,4 +50,8 @@ route::get('search_product', [AdminController::class,'search_product']) -> middl
 
 route::get('product_details/{id}', [HomeController::class,'product_details']);
 
+route::get('add_cart/{id}', [HomeController::class,'add_cart'])->middleware(['auth', 'verified']);
+
+route::get('view_cart', [HomeController::class,'view_cart'])->middleware(['auth', 'verified']);
+
 

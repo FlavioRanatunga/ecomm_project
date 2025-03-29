@@ -40,9 +40,9 @@
                     <td style="text-align: center;">{{ $product->category }}</td>
                     <td style="text-align: center;">
                     <img 
-        src="{{ $product->image ? asset('products/' . $product->image) : asset('images/placeholder.png') }}" 
-        alt="Product Image" 
-        style="width: 100px; height: 100px; object-fit: cover;">
+                      src="{{ $product->image ? asset('products/' . $product->image) : asset('images/placeholder.png') }}" 
+                      alt="Product Image" 
+                      style="width: 100px; height: 100px; object-fit: cover;">
                     </td>
                     <td style="text-align: center;">
                       <a href="{{ url('edit_product', $product->id) }}" class="btn btn-success">Edit</a>
