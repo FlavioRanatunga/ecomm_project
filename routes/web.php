@@ -54,4 +54,13 @@ route::get('add_cart/{id}', [HomeController::class,'add_cart'])->middleware(['au
 
 route::get('view_cart', [HomeController::class,'view_cart'])->middleware(['auth', 'verified']);
 
+route::get('delete_cart/{id}', [HomeController::class,'delete_cart']) -> middleware(['auth', 'verified']);
+
+route::post('place_order', [HomeController::class,'place_order']) -> middleware(['auth', 'verified']);
+
+route::get('view_order', [AdminController::class,'view_order']) -> middleware(['auth', 'admin']);
+
+route::get('status_otw/{id}', [AdminController::class,'status_otw']) -> middleware(['auth', 'admin']);
+
+route::get('status_del/{id}', [AdminController::class,'status_del']) -> middleware(['auth', 'admin']);
 

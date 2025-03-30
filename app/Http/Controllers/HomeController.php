@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -94,6 +95,49 @@ class HomeController extends Controller
         }
 
         return view('home.cart', compact('count', 'cart')); 
+    }
+
+    public function delete_cart($id)
+    {
+        $cart_item = Cart::find($id);
+        $cart_item->delete();
+        toastr()->success('Product removed from the cart successfully');
+
+        return redirect()->back();
+    }
+
+    public function place_order(Request $request)
+    {
+        $name = $request->name;
+        $address = $request->address;
+        $phone = $request->phone;
+        $order = new Order;
+
+        $user_id = Auth::user()->id;
+        $cart = Cart::where('user_id', $user_id)->get(); 
+
+        foreach($cart as $carts)
+        {
+            $order = new Order;
+            $order->name = $name;
+            $order->rec_address = $address;
+            $order->phone = $phone;
+            $order->user_id = $user_id;
+            $order->product_id = $carts->product_id;
+
+            $order->save();
+        }
+
+        $remove_cart = Cart::where('user_id', $user_id)->get(); 
+
+        foreach($remove_cart as $remove)
+        {
+            $remove->delete();
+        }
+
+        toastr()->success('Order placed successfully');
+
+        return redirect()->back();
     }
 
 }
