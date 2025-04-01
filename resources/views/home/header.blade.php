@@ -37,6 +37,10 @@
           @if (Route::has('login'))
             
             @auth 
+            <a class="nav-link" href="{{url('view_orders')}}">
+              Testimonial
+            </a>
+
             <a href="{{url('view_cart')}}">
               <i class="fa fa-shopping-bag" aria-hidden="true"></i>
               [{{$count}}]

@@ -38,6 +38,28 @@
             font-weight: bold;
             color: #333;
         }
+
+        /* Status Colors */
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .status.otw {
+            background-color: #ffc107; /* Yellow for "On The Way" */
+            color: #fff;
+        }
+
+        .status.delivered {
+            background-color: #28a745; /* Green for "Delivered" */
+            color: #fff;
+        }
+
+        .status.inProgress {
+            background-color: #dc3545; /* Red for "inProgress" */
+            color: #fff;
+        }
     </style>
   </head>
   <body>
@@ -60,7 +82,7 @@
               <th>Price</th>
               <th>Image</th>
               <th>Status</th>
-              <th>Change status</th>
+              <th>Change Status</th>
             </tr>
           </thead>
           <tbody>
@@ -70,18 +92,28 @@
               <td>{{ $order->rec_address }}</td>
               <td>{{ $order->phone }}</td>
               <td>{{ $order->product->title }}</td>
-              <td>{{ $order->product->price }}</td>
+              <td>${{ $order->product->price }}</td>
               <td>
                 <img src="{{ $order->product->image ? asset('products/' . $order->product->image) : asset('images/placeholder.png') }}" alt="Product Image">
               </td>
-              <td>{{ $order->status }}</td>
+              <td>
+                <!-- Dynamically apply CSS class based on status -->
+                <span class="status 
+                  @if($order->status == 'On the way') otw 
+                  @elseif($order->status == 'Delivered') delivered 
+                  @elseif ($order->status == 'in progress') inProgress 
+                  @endif">
+                  {{ $order->status }}
+                </span>
+              </td>
               <td>
                 <a class="btn btn-primary" href="{{url('status_otw', $order->id)}}">
-                    On The way
+                    On The Way
                 </a>
                 <a class="btn btn-success" href="{{url('status_del', $order->id)}}">
                     Delivered
                 </a>
+              </td>
             </tr>
             @endforeach
           </tbody>

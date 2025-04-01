@@ -13,7 +13,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $total_users = User::where('usertype', 'user')->get()->count();
+        $total_products =  Product::count();
+        $total_orders = Order::count();
+        $total_delivered = Order::where('status', 'Delivered')->get()->count();
+        return view('admin.index', compact('total_users', 'total_products', 'total_orders', 'total_delivered'));
     }
 
     public function home()
@@ -138,6 +142,25 @@ class HomeController extends Controller
         toastr()->success('Order placed successfully');
 
         return redirect()->back();
+    }
+
+    public function view_orders()
+    {
+        $user = Auth::user();
+        $user_id = $user->id;
+        $orders = Order::where('user_id', $user_id)->get();
+        if(Auth::id())
+        {
+            $count = Cart::where('user_id', $user_id) ->count();
+        }
+        else
+        {
+            $count='';
+        }
+
+        return view('home.view_orders', compact('count', 'orders'));
+        
+        
     }
 
 }

@@ -64,3 +64,4 @@ route::get('status_otw/{id}', [AdminController::class,'status_otw']) -> middlewa
 
 route::get('status_del/{id}', [AdminController::class,'status_del']) -> middleware(['auth', 'admin']);
 
+route::get('view_orders', [HomeController::class,'view_orders']) -> middleware(['auth', 'verified']);
