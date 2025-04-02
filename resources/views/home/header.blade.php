@@ -38,7 +38,7 @@
             
             @auth 
             <a class="nav-link" href="{{url('view_orders')}}">
-              Testimonial
+              <i class="fa fa-clipboard" aria-hidden="true"></i> View Orders
             </a>
 
             <a href="{{url('view_cart')}}">

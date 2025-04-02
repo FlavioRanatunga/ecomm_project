@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
+use Stripe;
+use Session;
 
 class HomeController extends Controller
 {
@@ -161,6 +163,59 @@ class HomeController extends Controller
         return view('home.view_orders', compact('count', 'orders'));
         
         
+    }
+
+    public function stripe($value)
+    {
+
+        return view('home.stripe', compact('value'));
+
+    }
+
+    public function stripePost(Request $request, $value)
+    {
+
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    
+        Stripe\Charge::create ([
+                "amount" => $value * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Test payment" 
+
+        ]);
+
+        $name = Auth::user()->name;
+        $address = Auth::user()->address;
+        $phone = Auth::user()->phone;
+
+        $order = new Order;
+
+        $user_id = Auth::user()->id;
+        $cart = Cart::where('user_id', $user_id)->get(); 
+
+        foreach($cart as $carts)
+        {
+            $order = new Order;
+            $order->name = $name;
+            $order->rec_address = $address;
+            $order->phone = $phone;
+            $order->user_id = $user_id;
+            $order->product_id = $carts->product_id;
+            $order->payment_status = 'paid';
+
+            $order->save();
+        }
+
+        $remove_cart = Cart::where('user_id', $user_id)->get(); 
+
+        foreach($remove_cart as $remove)
+        {
+            $remove->delete();
+        }
+
+        toastr()->success('Order placed successfully');
+        return redirect('view_cart');
     }
 
 }

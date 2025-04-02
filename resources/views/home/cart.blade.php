@@ -98,11 +98,12 @@
         }
 
         .empty-cart {
-            text-align: center;
-            font-size: 20px;
-            color: #888;
-            margin-top: 20px;
-        }
+        text-align: center;
+        font-size: 20px;
+        color: #888;
+        margin-top: 50px; 
+        margin-bottom: 50px;
+        padding: 20px; 
 
         .btn-danger {
             padding: 8px 12px;
@@ -165,12 +166,7 @@
                 <div class="total-price">
                     Total Price: ${{ $value }}
                 </div>
-                @else
-                <p class="empty-cart">Your cart is empty. <a href="{{ url('/dashboard') }}">Shop now</a>.</p>
-                @endif
-            </div>
-
-            <!-- Order Form Section -->
+                <!-- Order Form Section -->
             <div class="order-form">
                 <h3>Place Your Order</h3>
                 <form action="{{ url('place_order') }}" method="POST">
@@ -188,10 +184,16 @@
                         <input type="text" id="phone" name="phone" value="{{Auth::user()->phone}}">
                     </div>
                     <div>
-                        <input class="btn btn-primary" type="submit" value="Place Order">
+                        <input class="btn btn-primary" type="submit" value="Cash on delivery">
+                        <a class="btn btn-success" href="{{url('stripe', $value)}}">Pay using card</a>
                     </div>
                 </form>
             </div>
+                @else
+                <p class="empty-cart">Your cart is empty. <a href="{{ url('/dashboard') }}">Shop now</a>.</p>
+                @endif
+            </div>
+
         </div>
     </div>
     <!-- cart details end -->
